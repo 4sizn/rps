@@ -13,9 +13,15 @@ export function game(players: Player[]): GAME_RESULT {
 export function makePlayer(hand: HAND): Player {
   assert(hand >= 0 && hand < 3, "player hands problem...");
   return {
-    id: new Crypto().randomUUID(),
+    id: window.crypto.randomUUID(),
     hand: hand,
   };
+}
+
+export function makeComputer(): Player {
+  const randomHand =
+    window.crypto.getRandomValues(new Uint32Array(1)).at(0)! % 2;
+  return makePlayer(randomHand);
 }
 
 export function rpsResult(myHand: HAND, otherHand: HAND): RPS_RESULT {
