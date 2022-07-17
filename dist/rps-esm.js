@@ -1,3 +1,9 @@
+var HAND = /* @__PURE__ */ ((HAND2) => {
+  HAND2[HAND2["ROCK"] = 0] = "ROCK";
+  HAND2[HAND2["PAPER"] = 1] = "PAPER";
+  HAND2[HAND2["SCISSORS"] = 2] = "SCISSORS";
+  return HAND2;
+})(HAND || {});
 var RPS_RESULT = /* @__PURE__ */ ((RPS_RESULT2) => {
   RPS_RESULT2[RPS_RESULT2["WIN"] = 0] = "WIN";
   RPS_RESULT2[RPS_RESULT2["LOSE"] = 1] = "LOSE";
@@ -34,5 +40,5 @@ function assert(condition, message) {
   }
 }
 
-export { game, makePlayer, rpsResult };
+export { HAND, RPS_RESULT, game, makePlayer, rpsResult };
 //# sourceMappingURL=rps-esm.js.map

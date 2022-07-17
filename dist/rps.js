@@ -2,6 +2,12 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
+var HAND = /* @__PURE__ */ ((HAND2) => {
+  HAND2[HAND2["ROCK"] = 0] = "ROCK";
+  HAND2[HAND2["PAPER"] = 1] = "PAPER";
+  HAND2[HAND2["SCISSORS"] = 2] = "SCISSORS";
+  return HAND2;
+})(HAND || {});
 var RPS_RESULT = /* @__PURE__ */ ((RPS_RESULT2) => {
   RPS_RESULT2[RPS_RESULT2["WIN"] = 0] = "WIN";
   RPS_RESULT2[RPS_RESULT2["LOSE"] = 1] = "LOSE";
@@ -38,7 +44,9 @@ function assert(condition, message) {
   }
 }
 
+exports.HAND = HAND;
+exports.RPS_RESULT = RPS_RESULT;
 exports.game = game;
 exports.makePlayer = makePlayer;
 exports.rpsResult = rpsResult;
-//# sourceMappingURL=rps-cjs.js.map
+//# sourceMappingURL=rps.js.map

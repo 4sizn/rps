@@ -11,7 +11,7 @@ export default [
     ],
     output: [
       {
-        file: `dist/rps-cjs.js`,
+        file: `dist/rps.js`,
         format: `cjs`,
         sourcemap: true,
       },
@@ -22,7 +22,4 @@ export default [
       },
     ],
   },
-  // {
-  //   input
-  // }
 ];
