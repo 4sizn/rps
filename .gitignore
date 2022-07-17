@@ -10,4 +10,17 @@
 !.yarn/cache
 #.pnp.*
 
-/node_modules
+node_modules
+yarn-error.log
+npm-debug.log
+npm-debug.log.*
+yarn-error.log
+yarn.lock
+.DS_Store
+.vscode
+.idea
+.github
+.npmignore
+jest.config.js
+tsconfig.json
+.prettierrc
