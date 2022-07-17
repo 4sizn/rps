@@ -1,4 +1,3 @@
-export * from "./types";
 import { GAME_RESULT, Player, HAND, RPS_RESULT } from "./types";
 
 export function game(players: Player[]): GAME_RESULT {

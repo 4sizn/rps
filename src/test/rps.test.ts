@@ -1,4 +1,6 @@
-import { makePlayer, game, rpsResult, HAND, RPS_RESULT } from "../rps";
+import { makePlayer, game, rpsResult } from "../rps";
+import { HAND, RPS_RESULT } from "../types";
+
 describe("check rps logic", () => {
   test("win", () => {
     expect(
