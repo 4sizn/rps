@@ -1,5 +1,6 @@
-import { GAME_RESULT, Player, HAND, RPS_RESULT } from "./types";
 export * from "./types";
+import { GAME_RESULT, Player, HAND, RPS_RESULT } from "./types";
+
 export function game(players: Player[]): GAME_RESULT {
   const pHands = [...new Set(players.map((p) => p.hand))];
   if (pHands.length !== 2) return { draw: true };

@@ -1,12 +1,9 @@
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-var HAND = /* @__PURE__ */ ((HAND2) => {
-  HAND2[HAND2["ROCK"] = 0] = "ROCK";
-  HAND2[HAND2["PAPER"] = 1] = "PAPER";
-  HAND2[HAND2["SCISSORS"] = 2] = "SCISSORS";
-  return HAND2;
+// src/types.ts
+var HAND = /* @__PURE__ */ ((HAND3) => {
+  HAND3[HAND3["ROCK"] = 0] = "ROCK";
+  HAND3[HAND3["PAPER"] = 1] = "PAPER";
+  HAND3[HAND3["SCISSORS"] = 2] = "SCISSORS";
+  return HAND3;
 })(HAND || {});
 var RPS_RESULT = /* @__PURE__ */ ((RPS_RESULT2) => {
   RPS_RESULT2[RPS_RESULT2["WIN"] = 0] = "WIN";
@@ -15,11 +12,12 @@ var RPS_RESULT = /* @__PURE__ */ ((RPS_RESULT2) => {
   return RPS_RESULT2;
 })(RPS_RESULT || {});
 
+// src/rps.ts
 function game(players) {
   const pHands = [...new Set(players.map((p) => p.hand))];
   if (pHands.length !== 2)
     return { draw: true };
-  const winned = rpsResult(pHands[0], pHands[1]) === RPS_RESULT.WIN ? pHands[0] : pHands[1];
+  const winned = rpsResult(pHands[0], pHands[1]) === 0 /* WIN */ ? pHands[0] : pHands[1];
   return { winners: players.filter((p) => p.hand === winned) };
 }
 function makePlayer(hand) {
@@ -30,7 +28,7 @@ function makePlayer(hand) {
   };
 }
 function rpsResult(myHand, otherHand) {
-  return [RPS_RESULT.WIN, RPS_RESULT.LOSE, RPS_RESULT.DRAW][(myHand - otherHand + 2) % 3];
+  return [0 /* WIN */, 1 /* LOSE */, 2 /* DRAW */][(myHand - otherHand + 2) % 3];
 }
 function getUUID() {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
@@ -43,10 +41,10 @@ function assert(condition, message) {
     throw new Error(message || "Assertion failed");
   }
 }
-
-exports.HAND = HAND;
-exports.RPS_RESULT = RPS_RESULT;
-exports.game = game;
-exports.makePlayer = makePlayer;
-exports.rpsResult = rpsResult;
-//# sourceMappingURL=rps.js.map
+export {
+  HAND,
+  RPS_RESULT,
+  game,
+  makePlayer,
+  rpsResult
+};
