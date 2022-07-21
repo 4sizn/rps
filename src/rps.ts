@@ -13,14 +13,13 @@ export function game(players: Player[]): GAME_RESULT {
 export function makePlayer(hand: HAND): Player {
   assert(hand >= 0 && hand < 3, "player hands problem...");
   return {
-    id: window.crypto.randomUUID(),
+    id: randomUUID(),
     hand: hand,
   };
 }
 
 export function makeComputer(): Player {
-  const randomHand =
-    window.crypto.getRandomValues(new Uint32Array(1)).at(0)! % 2;
+  const randomHand = Math.floor(Math.random() * 3);
   return makePlayer(randomHand);
 }
 
@@ -34,4 +33,13 @@ function assert(condition: boolean, message: string) {
   if (!condition) {
     throw new Error(message || "Assertion failed");
   }
+}
+
+// UUID v4 generator in JavaScript (RFC4122 compliant)
+function randomUUID() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 3) | 8;
+    return v.toString(16);
+  });
 }

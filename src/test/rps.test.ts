@@ -1,4 +1,4 @@
-import { makePlayer, game, rpsResult } from "../rps";
+import { makePlayer, game, rpsResult, makeComputer } from "../rps";
 import { HAND, RPS_RESULT } from "../types";
 
 describe("check rps logic", () => {
@@ -39,16 +39,29 @@ describe("check rps logic", () => {
 
 describe("check rps group logic", () => {
   test("winner", () => {
-    expect(game([makePlayer(0), makePlayer(2)])).toMatchObject({
-      winners: [{ hand: 0 }],
-    });
-    expect(game([makePlayer(1), makePlayer(0), makePlayer(0)])).toMatchObject({
-      winners: [{ hand: 1 }],
+    expect(
+      game([makePlayer(HAND.ROCK), makePlayer(HAND.SCISSORS)])
+    ).toMatchObject({
+      winners: [{ hand: HAND.ROCK }],
     });
     expect(
-      game([makePlayer(2), makePlayer(1), makePlayer(1), makePlayer(1)])
+      game([
+        makePlayer(HAND.PAPER),
+        makePlayer(HAND.ROCK),
+        makePlayer(HAND.ROCK),
+      ])
     ).toMatchObject({
-      winners: [{ hand: 2 }],
+      winners: [{ hand: HAND.PAPER }],
+    });
+    expect(
+      game([
+        makePlayer(HAND.SCISSORS),
+        makePlayer(HAND.PAPER),
+        makePlayer(HAND.PAPER),
+        makePlayer(HAND.PAPER),
+      ])
+    ).toMatchObject({
+      winners: [{ hand: HAND.SCISSORS }],
     });
   });
   test("draw", () => {
@@ -61,5 +74,16 @@ describe("check rps group logic", () => {
     expect(
       game([makePlayer(HAND.SCISSORS), makePlayer(HAND.SCISSORS)])
     ).toEqual({ draw: true });
+  });
+});
+
+describe("check computer", () => {
+  test("make computer", () => {
+    expect(makeComputer()).toHaveProperty("id");
+    expect(makeComputer()).toHaveProperty("hand");
+  });
+
+  test("play game with computer", () => {
+    expect(game([makeComputer(), makeComputer()]));
   });
 });
